@@ -3,20 +3,42 @@
         private $input;
         private $target_words;
 
-        function anagram_check($input, $target_words)
+        function anagram_check($input, $target_input)
         {
             $input_letters = str_split($input);
-            $target_letters = str_split($target_words);
+            $target_words = explode(" ", $target_input);
             sort($input_letters);
-            sort($target_letters);
+            $counter = 0;
 
-            if ($input_letters === $target_letters)
+
+
+            foreach ($target_words as $word)
             {
+                $target_letters = str_split($word);
+                // sort($target_letters);
+                foreach ($target_letters as $target)
+                {
+                    foreach ($input_letters as $letter)
+                    {
+                        if ($letter === $target)
+                        {
+                            $counter++;
+                            echo $counter;
+                        }
+                    }
+                }
+            }
+            if ($counter >= count($input_letters))
+            {
+                // $anagram = implode("", $word);
+                // echo $anagram . "is an anagram!";
                 return true;
             }
-            else {
+            else if ($counter < count($input_letters)) {
                 return false;
             }
+
+
         }
     }
  ?>

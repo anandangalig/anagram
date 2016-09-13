@@ -53,6 +53,10 @@ _The App will correctly recognize the matching anagram from the given list using
   + _IN:  low in [slow]_
   + _OUT: "low" is in "slow"_
 
+* _A Word has no partially matching anagram_
+  + _IN:  low in [fast]_
+  + _OUT: "low" is not "slow"_
+
   * _Compare a word to multiple potential anagrams_
     + _IN:  low in [slow, below, belt, lower, tangerine]_
     + _OUT: "low" is in "slow, below, and lower"_
