@@ -2,20 +2,53 @@
     class Anagram{
         private $input;
         private $target_words;
+        private $matched_words;
 
-        function anagram_check($input, $target_input)
+        function __construct($input, $target_words)
         {
-            $input_letters = str_split($input);
-            $target_words = explode(" ", $target_input);
-            sort($input_letters);
-            $counter = 0;
+            $this->input = $input;
+            $this->target_words = $target_words;
+            $this->matched_words = [];
+        }
+
+        function getInput()
+        {
+            return $this->input;
+        }
+        function setInput($new_input)
+        {
+            $this->input = (string) $new_input;
+        }
+
+        function getTargetWords()
+        {
+            return $this->target_words;
+        }
+        function setTargetWords($new_target_words)
+        {
+            $this->target_words = (string) $new_target_words;
+        }
+
+        function getMatchedWords()
+        {
+            return $this->matched_words;
+        }
+        function setMatchedWords($new_matched_words)
+        {
+            $this->matched_words = (string) $new_matched_words;
+        }
 
 
+        function anagram_check()
+        {
+            $input_letters = str_split($this->input);
+            $target_words = explode(" ", $this->target_words);
+            $matched_words = [];
 
             foreach ($target_words as $word)
             {
+                $counter = 0;
                 $target_letters = str_split($word);
-                // sort($target_letters);
                 foreach ($target_letters as $target)
                 {
                     foreach ($input_letters as $letter)
@@ -23,22 +56,14 @@
                         if ($letter === $target)
                         {
                             $counter++;
-                            echo $counter;
                         }
                     }
                 }
+                if ($counter >= count($input_letters))
+                {
+                    array_push($this->matched_words, $word);
+                }
             }
-            if ($counter >= count($input_letters))
-            {
-                // $anagram = implode("", $word);
-                // echo $anagram . "is an anagram!";
-                return true;
-            }
-            else if ($counter < count($input_letters)) {
-                return false;
-            }
-
-
         }
     }
  ?>

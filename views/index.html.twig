@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Anagrams!</title>
+    </head>
+    <body>
+        <h1>Anagrams</h1>
+        <h3>To find an anagram pair between two words, enter one word on the top form, and any amount of words to the bottom. Then press submit to see if there are any anagram pairs amongst the words. </h3>
+        <form action="/results">
+            <label for="input"><h4>Write a word</h4></label>
+            <input type="text" id="input" name="input">
+
+            <label for="target_input"><h4>Write list of words seperated by spaces</h4></label>
+            <input type="text" id="target_input" name="target_input">
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <h2>Matching Anagrams:</h2>
+        {% for word in anagram.getMatchedWords %}
+        <li>{{ word }}</li>
+        {% endfor %}
+    </body>
+</html>
